@@ -3,9 +3,13 @@ const bcryptjs = require('bcryptjs') //thư viện mã hóa mật khẩu
 const generateTokenAndSetCookie = require('../utils/generateTokenJS')
 
 class authControllers {
+    // GET /
+    home(req, res) {
+        res.redirect('/login');
+    }
     // GET /login
     login(req, res) {
-        res.send("Login")
+        res.render('signin')
     }
 
     //POST /login
@@ -23,10 +27,10 @@ class authControllers {
             res.status(500).json({ error: error.message })
         }
     }
-    
+
     // GET /signup
     signup(req, res) {
-        res.send("Signup")
+        res.render('signup')
     }
     // POST /singup
     async signupUser(req, res) {
